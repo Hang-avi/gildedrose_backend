@@ -219,10 +219,11 @@ public class ItemServiceTest {
  */
     public void TestCreateItem(){
 
-        var item=new Item( 0, "Red Ron", -40, 41, Item.Type.NORMAL);
+        ItemNormal item=new ItemNormal( 0, "Red Ron", -40, 41);
 
         when(itemRepository.save(item)).thenReturn(item);
-        assertEquals(item,itemService.createItem(item));
+        var itemcreated=itemService.createItem(item);
+        assertEquals(item.getId(),itemcreated.getId());
         verify(itemRepository,times(1)).save(any());
     }
     @Test

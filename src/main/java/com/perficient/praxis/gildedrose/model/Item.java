@@ -1,14 +1,11 @@
 package com.perficient.praxis.gildedrose.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
-
-@Entity
+@Entity(name="Item")
 @Table(name = "items")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="Item_type")
 public class Item {
 
     @Id

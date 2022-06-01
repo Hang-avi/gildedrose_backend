@@ -1,7 +1,17 @@
 package com.perficient.praxis.gildedrose.model;
 
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+@Entity(name="ItemTicket")
+
+@DiscriminatorValue("TICKET")
 public class ItemTicket extends Item {
 
+    public ItemTicket(){}
     public ItemTicket(int id, String name, int sellIn, int quality) {
         super(id, name, sellIn, quality,Type.TICKETS);
 

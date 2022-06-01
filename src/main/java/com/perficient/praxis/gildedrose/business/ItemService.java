@@ -31,41 +31,47 @@ public class ItemService {
         return Arrays.asList(items);
     }
 
-    public ItemNormal createItem(ItemNormal item) {
-        return itemRepository.save(item);
-    }
-
-    public ItemTicket createItem(ItemTicket item) {
-        return itemRepository.save(item);
-    }
-
-    public ItemAged createItem(ItemAged item) {
-        return itemRepository.save(item);
-    }
-
-    public ItemLegendary createItem(ItemLegendary item) {
-        return itemRepository.save(item);
-    }
-
     public Item createItem(Item item) {
-        if (item.type == Item.Type.NORMAL){
-            ItemNormal item1 = new ItemNormal(item.getId(), item.name, item.sellIn, item.quality);
-            itemRepository.save(item1);
-        } else if (item.type == Item.Type.AGED){
-            itemRepository.save(new ItemAged(item.getId(), item.name, item.sellIn, item.quality));
-        } else if (item.type == Item.Type.LEGENDARY){
-            itemRepository.save(new ItemLegendary(item.getId(), item.name, item.sellIn, item.quality));
+        if (item.type== Item.Type.NORMAL){
+            ItemNormal itemWithType = new ItemNormal(item.getId(), item.name, item.sellIn, item.quality);
+            itemRepository.save(itemWithType);
+            return itemWithType;
+
+        } else if (item.type==Item.Type.AGED){
+            ItemAged itemWithType = new ItemAged(item.getId(), item.name, item.sellIn, item.quality);
+            itemRepository.save(itemWithType);
+            return itemWithType;
+        } else if (item.type==Item.Type.LEGENDARY){
+            ItemLegendary itemWithType = new ItemLegendary(item.getId(), item.name, item.sellIn, item.quality);
+            itemRepository.save(itemWithType);
+            return itemWithType;
         } else{
-            itemRepository.save(new ItemTicket(item.getId(), item.name, item.sellIn, item.quality));
+            ItemTicket itemWithType = new ItemTicket(item.getId(), item.name, item.sellIn, item.quality);
+            itemRepository.save(itemWithType);
+            return itemWithType;
         }
-        return item;
     }
 
     public Item updateItem(int id, Item item) {
         if (!(itemRepository.existsById(id))) {
             throw new ResourceNotFoundException("The Item to get updated must exist");
         }
-        return itemRepository.save(new Item(id, item.name, item.sellIn, item.quality, item.type));
+
+        else if (item.type== Item.Type.NORMAL){
+            return itemRepository.save(new ItemNormal(id, item.name, item.sellIn, item.quality));
+        }
+
+        else if (item.type== Item.Type.AGED){
+            return itemRepository.save(new ItemAged(id, item.name, item.sellIn, item.quality));
+        }
+
+        else if (item.type== Item.Type.LEGENDARY){
+            return itemRepository.save(new ItemLegendary(id, item.name, item.sellIn, item.quality));
+        }
+
+        else {
+            return itemRepository.save(new ItemTicket(id, item.name, item.sellIn, item.quality));
+        }
     }
 
     public List<Item> listItems(){

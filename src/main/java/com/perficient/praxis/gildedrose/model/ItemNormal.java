@@ -1,6 +1,21 @@
 package com.perficient.praxis.gildedrose.model;
 
+
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+@Entity(name="ItemNormal")
+
+@DiscriminatorValue("NORMAL")
 public class ItemNormal extends Item {
+
+
+    public ItemNormal(){
+
+    }
     public ItemNormal(int id, String name, int sellIn, int quality) {
         super(id,name,sellIn,quality,Type.NORMAL);
 
