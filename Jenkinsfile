@@ -24,7 +24,7 @@ node{
         sh "sleep 6"
         sh "npm install eslint-plugin-import"
         sh "sleep 6"
-        sh "eslint-config-airbnb-base"
+        sh "npm install eslint-config-airbnb-base"
         sh "sleep 6"
         sh "npm run lint -- --fix"
         sh "sleep 3"
