@@ -54,7 +54,7 @@ it('Consume PUT Service', async () => {
 
 describe('gildedrose Api Tests', () => {
   it('Consume DELETE Service', async () => {
-    const response = await agent.delete(`http://localhost/api/items/${itemId.toString()}`);
+    const response = await agent.delete(`http://localhost:8081/api/items/${itemId.toString()}`);
 
     expect(response.status).to.equal(statusCode.OK);
   });
