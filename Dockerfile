@@ -25,7 +25,7 @@ ENV JAVA_HOME /usr/lib/jvm/default-jvm/
 CMD ["mvn", "--version"]
 
 #Run tests
-CMD ["mvn", "clean package"]
+CMD ["mvn", "clean","package"]
 
 
 COPY ./target/gildedrose-0.0.1-SNAPSHOT.jar /usr/app/
