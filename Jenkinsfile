@@ -3,7 +3,6 @@ node{
        git url:'https://github.com/Hang-avi/gildedrose_backend', branch:'main'
    }
    stage('Run tests'){
-       sh "mount -o remount,exec /var"
        def mvnHome = tool name: 'maven-3', type: 'maven'
        def mvnCMD = "${mvnHome}/bin/mvn" 
        sh "${mvnHome} clean package"
