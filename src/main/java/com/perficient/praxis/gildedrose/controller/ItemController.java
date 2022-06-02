@@ -47,6 +47,7 @@ public class ItemController {
     @PutMapping("/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable int id,
                                            @RequestBody Item item){
+
         Item createdItem = itemService.updateItem(id, item);
         return new ResponseEntity<>(createdItem, HttpStatus.OK);
     }
@@ -59,7 +60,6 @@ public class ItemController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Item> deleteById(@PathVariable int id){
-        itemService.deleteItem(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

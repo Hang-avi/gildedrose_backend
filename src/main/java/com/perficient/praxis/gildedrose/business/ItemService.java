@@ -52,27 +52,7 @@ public class ItemService {
         }
     }
 
-    public Item updateItem(int id, Item item) {
-        if (!(itemRepository.existsById(id))) {
-            throw new ResourceNotFoundException("The Item to get updated must exist");
-        }
 
-        else if (item.type== Item.Type.NORMAL){
-            return itemRepository.save(new ItemNormal(id, item.name, item.sellIn, item.quality));
-        }
-
-        else if (item.type== Item.Type.AGED){
-            return itemRepository.save(new ItemAged(id, item.name, item.sellIn, item.quality));
-        }
-
-        else if (item.type== Item.Type.LEGENDARY){
-            return itemRepository.save(new ItemLegendary(id, item.name, item.sellIn, item.quality));
-        }
-
-        else {
-            return itemRepository.save(new ItemTicket(id, item.name, item.sellIn, item.quality));
-        }
-    }
 
     public List<Item> listItems(){
         return itemRepository.findAll();
@@ -83,13 +63,39 @@ public class ItemService {
                 ()-> new ResourceNotFoundException(""));
     }
 
-    public Item deleteItem(int id) {
+    public void deleteItem(int id) {
         try {
             Item item = findById(id);
+
             itemRepository.delete(item);
-            return item;
+
         } catch (ResourceNotFoundException e) {
             throw e;
+        }
+    }
+
+    public Item updateItem(int id, Item item) {
+        if (!(itemRepository.existsById(id))) {
+            throw new ResourceNotFoundException("The Item to get updated must exist");
+        }
+        else if (item.type== Item.Type.NORMAL){
+
+            return itemRepository.save(new ItemNormal(id, item.name, item.sellIn, item.quality));
+        }
+
+        else if (item.type== Item.Type.AGED){
+            this.deleteItem(id);
+            return itemRepository.save(new ItemAged(id, item.name, item.sellIn, item.quality));
+        }
+
+        else if (item.type== Item.Type.LEGENDARY){
+            this.deleteItem(id);
+            return itemRepository.save(new ItemLegendary(id, item.name, item.sellIn, item.quality));
+        }
+
+        else {
+            this.deleteItem(id);
+            return itemRepository.save(new ItemTicket(id, item.name, item.sellIn, item.quality));
         }
     }
 

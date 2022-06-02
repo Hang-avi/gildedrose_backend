@@ -250,7 +250,7 @@ public class ItemServiceTest {
         when(itemRepository.findAll()).thenReturn(List.of(newVersionItem));
         when(itemRepository.existsById(0)).thenReturn(true);
 
-        itemService.updateItem(0, newVersionItem);
+        itemService.createItem(newVersionItem);
 
         List<Item> itemsUpdated = itemService.updateQuality();
 
