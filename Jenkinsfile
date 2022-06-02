@@ -36,6 +36,7 @@ node{
         sh "npm run lint -- --fix"
         sh "sleep 3"
         sh "npm test"
+        sh "sleep 3"
         publishHTML (target : [allowMissing: false,
          alwaysLinkToLastBuild: true,
          keepAll: true,
