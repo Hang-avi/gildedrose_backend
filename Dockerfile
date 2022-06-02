@@ -24,8 +24,11 @@ ENV JAVA_HOME /usr/lib/jvm/default-jvm/
 # Define default command.
 CMD ["mvn", "--version"]
 
+#Run tests
+CMD ["mvn", "clean package"]
 
-COPY ./out/artifacts/gildedrose_jar/gildedrose-0.0.1-SNAPSHOT.jar /usr/app/
+
+COPY ./target/gildedrose-0.0.1-SNAPSHOT.jar /usr/app/
 ENV  spring.datasource.url=jdbc:postgresql://172.17.0.2:5432/postgres
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "gildedrose-0.0.1-SNAPSHOT.jar"]
