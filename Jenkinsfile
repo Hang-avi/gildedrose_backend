@@ -40,7 +40,7 @@ node{
         publishHTML (target : [allowMissing: false,
          alwaysLinkToLastBuild: true,
          keepAll: true,
-         reportDir: '/var/lib/jenkins/workspace/backend/report/',
+         reportDir: './backend/report',
          reportFiles: 'ApiTesting.html',
          reportName: 'Api Testing',
          reportTitles: 'Api Testing'])
