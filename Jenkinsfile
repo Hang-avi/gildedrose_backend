@@ -2,9 +2,9 @@ node{
    stage('SCM Checkout'){
        git url:'https://github.com/Hang-avi/gildedrose_backend', branch:'main'
    }
-   stage('Run tests'){
-       sh "/usr/share/maven/bin/mvn clean test"
-   }
+   //stage('Run tests'){
+   //    sh "/usr/share/maven/bin/mvn clean test"
+   //}
    stage('Build Docker Image'){
      sh 'docker build -t hangavi/hw5:backend .'
    }
