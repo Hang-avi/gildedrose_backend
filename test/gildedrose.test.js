@@ -45,7 +45,7 @@ it('Consume PUT Service', async () => {
 
   const response = await agent.put(`http://localhost:8081/api/items/${itemId.toString()}`).send(newItem);
 
-  expect(response.status).to.equal(statusCode.OK);
+  expect(response.status).to.equal(statusCode.CREATED);
   expect(response.body).to.have.property('name').to.equal(newItem.name);
   expect(response.body).to.have.property('sellIn').to.equal(newItem.sellIn);
   expect(response.body).to.have.property('quality').to.equal(newItem.quality);
