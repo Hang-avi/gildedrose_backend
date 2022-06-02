@@ -33,4 +33,4 @@ RUN mvn clean package
 #COPY ./target/gildedrose-0.0.1-SNAPSHOT.jar /usr/app/
 ENV  spring.datasource.url=jdbc:postgresql://172.17.0.2:5432/postgres
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/target/gildedrose-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/usr/app/target/gildedrose-0.0.1-SNAPSHOT.jar"]
