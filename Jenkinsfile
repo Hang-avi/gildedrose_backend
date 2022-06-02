@@ -6,7 +6,7 @@ node{
    //    sh "/usr/share/maven/bin/mvn clean test"
    //}
    stage('Build Docker Image'){
-     sh 'docker build -t hangavi/hw5:backend .'
+     sh 'docker build --no-cache -t hangavi/hw5:backend .'
    }
    stage('Push Docker Image'){
        withCredentials([string(credentialsId: 'contrasena_docker', variable: 'contrasena')]) {
