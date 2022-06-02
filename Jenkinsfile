@@ -11,8 +11,24 @@ node{
                 sh "docker run --name my-postgres -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres"
                 sh "sleep 10"
         }
-   stage('Build Docker Image'){
+   stage('Test and build Docker Image'){
      sh 'docker build -t hangavi/hw5:backend .'
+   }
+
+   stage('Api testing'){
+        sh 'npm install --save-dev mocha chai'
+        sh "sleep 6"
+        sh "npm install --save-dev http-status-codes"
+        sh "sleep 6"
+        sh "npm install --save superagent superagent-promise"
+        sh "sleep 6"
+        sh "npm install eslint-plugin-import"
+        sh "sleep 6"
+        sh "eslint-config-airbnb-base"
+        sh "sleep 6"
+        sh "npm run lint -- --fix"
+        sh "sleep 3"
+        sh "npm test"
    }
    stage('Push Docker Image'){
        withCredentials([string(credentialsId: 'contrasena_docker', variable: 'contrasena')]) {
