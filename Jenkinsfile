@@ -5,7 +5,7 @@ node{
    stage('Run tests'){
        def mvnHome = tool name: 'maven-3', type: 'maven'
        def mvnCMD = "${mvnHome}/bin/mvn" 
-       sh "${mvnHome} clean package"
+       sh "sudo ${mvnHome} clean package"
    }
    stage('Build Docker Image'){
      sh 'docker build -t hangavi/hw5:backend .'
