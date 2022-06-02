@@ -12,7 +12,7 @@ let item = {
 };
 
 it('Consume POST Service', async () => {
-  const response = await agent.post('http://localhost:8080/api/items').send(item);
+  const response = await agent.post('http://127.17.0.3:8080/api/items').send(item);
 
   expect(response.status).to.equal(statusCode.CREATED);
   expect(response.body).to.have.property('name').to.equal(item.name);
@@ -23,7 +23,7 @@ it('Consume POST Service', async () => {
 
 describe('gildedrose Api Tests', () => {
   it('Consume GET Service', async () => {
-    const response = await agent.get('http://localhost:8080/api/items');
+    const response = await agent.get('http://127.17.0.3:8080/api/items');
     expect(response.status).to.equal(statusCode.OK);
     response.body.forEach((itemInList) => {
       if (itemInList.id === itemId) {
@@ -43,7 +43,7 @@ it('Consume PUT Service', async () => {
     type: 'AGED'
   };
 
-  const response = await agent.put(`http://localhost:8080/api/items/${itemId.toString()}`).send(newItem);
+  const response = await agent.put(`http://127.17.0.3:8080/api/items/${itemId.toString()}`).send(newItem);
 
   expect(response.status).to.equal(statusCode.OK);
   expect(response.body).to.have.property('name').to.equal(newItem.name);
@@ -54,7 +54,7 @@ it('Consume PUT Service', async () => {
 
 describe('gildedrose Api Tests', () => {
   it('Consume DELETE Service', async () => {
-    const response = await agent.delete(`http://localhost:8080/api/items/${itemId.toString()}`);
+    const response = await agent.delete(`http://127.17.0.3/api/items/${itemId.toString()}`);
 
     expect(response.status).to.equal(statusCode.OK);
   });

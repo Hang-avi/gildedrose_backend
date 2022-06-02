@@ -2,9 +2,7 @@ node{
    stage('SCM Checkout'){
        git url:'https://github.com/Hang-avi/gildedrose_backend', branch:'main'
    }
-   //stage('Run tests'){
-   //    sh "/usr/share/maven/bin/mvn clean test"
-   //}
+
 
    stage("Run the database image"){
                 sh "docker stop my-postgres || true && docker rm my-postgres || true"
@@ -17,15 +15,15 @@ node{
 
    stage('Api testing'){
         sh 'npm install --save-dev mocha chai'
-        sh "sleep 6"
+        sh "sleep 3"
         sh "npm install --save-dev http-status-codes"
-        sh "sleep 6"
+        sh "sleep 3"
         sh "npm install --save superagent superagent-promise"
-        sh "sleep 6"
+        sh "sleep 3"
         sh "npm install eslint-plugin-import"
-        sh "sleep 6"
+        sh "sleep 3"
         sh "npm install eslint-config-airbnb-base"
-        sh "sleep 6"
+        sh "sleep 3"
         sh "npm run lint -- --fix"
         sh "sleep 3"
         sh "npm test"
