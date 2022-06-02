@@ -40,7 +40,7 @@ node{
         publishHTML (target : [allowMissing: false,
          alwaysLinkToLastBuild: true,
          keepAll: true,
-         reportDir: './backend/report',
+         reportDir: 'report',
          reportFiles: 'ApiTesting.html',
          reportName: 'Api Testing',
          reportTitles: 'Api Testing'])
