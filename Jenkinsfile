@@ -36,8 +36,7 @@ node{
         sh "npm run lint -- --fix"
         sh "sleep 3"
         sh "npm test"
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: "/var/lib/jenkins/workspace/backend/report/", reportFiles: 'ApiTesting.html', reportName: 'HTML Api_report', reportTitles: ''])
-
+        
    }
    stage('Push Docker Image'){
        withCredentials([string(credentialsId: 'contrasena_docker', variable: 'contrasena')]) {
