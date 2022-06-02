@@ -11,13 +11,7 @@ node{
         }
    stage('Test and build Docker Image'){
      sh 'docker build -t hangavi/hw5:backend .'
-     publishHTML (target : [allowMissing: false,
-              alwaysLinkToLastBuild: true,
-              keepAll: true,
-              reportDir: 'target/site/jacoco',
-              reportFiles: 'index.html',
-              reportName: 'UnitTesting',
-              reportTitles: 'UnitTesting'])
+
 
    }
 
