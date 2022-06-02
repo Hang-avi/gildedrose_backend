@@ -11,6 +11,15 @@ node{
         }
    stage('Test and build Docker Image'){
      sh 'docker build -t hangavi/hw5:backend .'
+
+   }
+
+   stage("Run the backend image"){
+
+       sh "docker stop backend || true && docker rm backend || true"
+       sh "docker run --name backend -p 8081:8080 -d hangavi/hw5:backend"
+       sh "sleep 30"
+
    }
 
    stage('Api testing'){
