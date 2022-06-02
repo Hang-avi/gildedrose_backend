@@ -1,4 +1,8 @@
 node{
+   stage('Free disk space from previous deployments'){
+       sh "docker rm -vf $(docker ps -aq) || true"
+       sh "docker rmi -f $(docker images -aq) || true"
+   }
    stage('SCM Checkout'){
        git url:'https://github.com/Hang-avi/gildedrose_backend', branch:'main'
    }
