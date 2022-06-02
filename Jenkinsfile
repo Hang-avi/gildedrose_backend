@@ -11,6 +11,7 @@ node{
         }
    stage('Test and build Docker Image'){
      sh 'docker build -t hangavi/hw5:backend .'
+     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: "/var/lib/jenkins/workspace/backend/report/", reportFiles: 'ApiTesting.html', reportName: 'HTML Api_report', reportTitles: ''])
 
    }
 
